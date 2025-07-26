@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(uv add:*)",
+      "Bash(uv init:*)",
+      "Bash(uv run:*)",
+      "Bash(git init:*)",
+      "Bash(rm:*)",
+      "Bash(git add:*)"
+    ],
+    "deny": []
+  }
+}
