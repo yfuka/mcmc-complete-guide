@@ -66,6 +66,52 @@ The project uses the standard scientific Python ecosystem:
 - Exercise sections left partially implemented for learner completion
 - Clear separation between theoretical examples and practical applications
 
+## Key Architectural Components
+
+### MCMC Algorithm Implementation Pattern
+Each MCMC algorithm follows a consistent structure:
+1. **Parameter initialization**: Setting up initial values and hyperparameters
+2. **Iteration loop**: Main sampling loop with convergence monitoring
+3. **Diagnostic computation**: Built-in convergence and efficiency metrics
+4. **Visualization helpers**: Standardized plotting functions for trace plots, autocorrelation, etc.
+
+### Chapter Dependencies and Learning Flow
+- **Chapter 1**: Foundational concepts (Markov chains, detailed balance)
+- **Chapter 2**: Core MH algorithm - builds on Chapter 1 theory
+- **Chapter 3**: Gibbs sampling - uses conditional distributions, builds on MH concepts
+- **Chapter 4**: Diagnostics - applies to all previous algorithms
+- **Chapter 5**: Applications - integrates all previous methods with real data
+- **Chapter 6**: Advanced methods - extends core concepts
+
+### Mathematical Notation Standards
+- Greek letters (θ, π, α, β) for parameters
+- Bold notation (**x**, **β**) for vectors/matrices in LaTeX
+- Consistent use of subscripts: x^(t) for time, x_i for indexing
+- Log-scale computations for numerical stability
+
+## MCMC-Specific Implementation Patterns
+
+### Sampling Functions
+All MCMC samplers return: `(samples, acceptance_rate, diagnostics_dict)`
+- `samples`: numpy array of shape (n_iterations, n_params)
+- `acceptance_rate`: float between 0 and 1
+- `diagnostics_dict`: contains convergence metrics, effective sample size, etc.
+
+### Convergence Diagnostics
+Standard diagnostic workflow includes:
+- R-hat (Gelman-Rubin) statistics for multi-chain convergence
+- Effective sample size calculations
+- Autocorrelation function analysis
+- Trace plot visualization
+- Accept/reject ratio monitoring
+
+### Visualization Standards
+Diagnostic plots follow consistent layout:
+- Trace plots: time series of parameter evolution
+- Posterior distributions: histograms with true values overlaid
+- Autocorrelation plots: lag vs correlation with 5% significance lines
+- Multi-panel figures for comprehensive analysis
+
 ## Development Workflow
 
 Since this is an educational repository focused on Jupyter notebooks:
